@@ -1,0 +1,51 @@
+name: simple alias
+comp_command: ./build/42sh
+stdin: |
+  alias foo='echo toto'
+  foo
+---
+name: function alias
+comp_command: ./build/42sh
+stdin: |
+  alias foo='toto () {
+    echo this is a test
+  }'
+  foo
+  toto
+---
+name: tricky function alias
+comp_command: ./build/42sh
+stdin: |
+  alias atroce='func('
+  atroce ) {
+      echo vraiment atroce
+  }
+  func
+---
+# name: alias calling alias
+# comp_command: ./build/42sh
+# stdin: |
+#   alias echo='echo bidule'
+#   alias machin='echo truc'
+#   machin
+# ---
+name: escaped alias
+comp_command: ./build/42sh
+stdin: |
+  alias echo='echo bidule'
+  \echo vrai
+---
+name: alias print
+comp_command: ./build/42sh
+stdin: |
+    alias foo="echo hey"
+    alias bar="echo shja"
+    alias -p
+    alias
+---
+name: alias print then select and alias
+comp_command: ./build/42sh
+stdin: |
+    alias foo="echo hey"
+    alias bar="echo shja"
+    alias -p foo

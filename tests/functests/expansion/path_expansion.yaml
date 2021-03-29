@@ -1,0 +1,55 @@
+name: simple path expansion
+comp_command: ./build/42sh
+stdin: echo *
+---
+name: medium path expansion
+comp_command: ./build/42sh
+stdin: echo tests/*
+---
+name: medium-hard path expansion
+comp_command: ./build/42sh
+stdin: echo tests/*/*
+---
+name: begins with slash path expansion
+comp_command: ./build/42sh
+stdin: echo /*
+---
+name: multiple path expansion
+comp_command: ./build/42sh
+stdin: echo tests/* src/*/*
+---
+name: not matching path expansion
+comp_command: ./build/42sh
+stdin: echo sabiiiiiiiine/*
+---
+name: nocaseglob expansion
+comp_command: ./build/42sh -O nocaseglob
+stdin: echo c/*
+---
+name: nocaseglobi hard expansion
+comp_command: ./build/42sh -O nocaseglob
+stdin: echo /a*
+---
+name: dotglob expansion
+comp_command: ./build/42sh -O dotglob
+stdin: echo *
+---
+name: dotglob quote expansion
+comp_command: ./build/42sh -O dotglob
+stdin: echo '*'
+---
+name: dotglob hard expansion
+comp_command: ./build/42sh -O dotglob
+stdin: echo /*
+---
+name: nullglob expansion
+comp_command: ./build/42sh -O nullglob
+stdin: echo sabiiiiine*
+---
+name: extglob expansion
+comp_command: ./build/42sh -O extglob
+stdin: echo /[a-f]*
+---
+name: extglob expansion 2
+comp_command: ./build/42sh -O extglob
+stdin: echo /[a-z]*

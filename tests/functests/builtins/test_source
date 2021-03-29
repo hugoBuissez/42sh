@@ -1,0 +1,6 @@
+echo sabine
+a=69
+echo $a
+echo foo
+export var=99
+exit 42

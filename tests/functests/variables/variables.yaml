@@ -1,0 +1,41 @@
+name: one assignment
+comp_command: ./build/42sh
+stdin: test=hello
+---
+name: two assignment
+comp_command: ./build/42sh
+stdin: test=hello foo=bar
+---
+name: hard substition
+comp_command: ./build/42sh
+stdin: |
+  test=hello
+  echo foo$test
+---
+name: double substition
+comp_command: ./build/42sh
+stdin: |
+  test=hello
+  foo=$test
+  echo $foo
+---
+name: modifying env variable
+comp_command: ./build/42sh
+stdin: |
+  echo $OLDPWD
+  OLDPWD=foo
+  echo $OLDPWD
+  cd src
+  echo $OLDPWD
+---
+name: command expansion assignment
+comp_command: ./build/42sh
+stdin: |
+  toto=$(echo foo bar)
+  echo $toto
+---
+name: tilde expansion assignment
+comp_command: ./build/42sh
+stdin: |
+  toto=~
+  echo $toto

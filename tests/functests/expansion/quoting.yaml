@@ -1,0 +1,63 @@
+name: double quotes
+comp_command: ./build/42sh
+stdin: |
+  echo "foo bar"
+  echo "foo ' bar"
+  echo "foo \ bar"
+  echo "foo \" bar"
+  echo "foo \' bar"
+  echo "foo \\ bar"
+  echo "foo \h bar"
+---
+name: single quotes
+comp_command: ./build/42sh
+stdin: |
+  echo 'foo bar'
+  echo 'foo " bar'
+  echo 'foo \ bar'
+  echo 'foo \" bar'
+  echo 'foo \\ bar'
+  echo 'foo \h bar'
+---
+name: backslash escape
+comp_command: ./build/42sh
+stdin: |
+  echo \foo \bar
+  echo \\foo
+---
+name: mixed
+comp_command: ./build/42sh
+stdin: |
+  echo "foo $(echo "test" 'test')"
+  echo "foo $(echo bar ")")"
+  echo 'foo bar'"test1 test2"foo bar
+  echo "echo foo $(echo "bar)")"
+  echo "echo foo $(echo "bar\)")"
+  echo "echo foo \$(echo bar)"
+  echo "foo $(echo 'bar' "echo wow") $(echo test)"
+  echo \this is "a test" $(echo bar)
+  echo \thisisa"test"$(echo bar)
+  echo "foo 'how about this" '"'
+---
+name: quotes for
+comp_command: ./build/42sh
+stdin: |
+    a='1 2 4'
+    for i in a
+    do
+        echo $i
+    done
+---
+name: quotes exp double
+comp_command: ./build/42sh
+stdin: |
+    a='this will be displayed'
+    echo "the string is $a"
+---
+name: quotes exp double hard
+comp_command: ./build/42sh
+stdin: |
+    a='this will be displayed'
+    b='this one too'
+    echo "the string is $a and $a"
+    echo "there are $(echo $a | wc -c) characters in strings"

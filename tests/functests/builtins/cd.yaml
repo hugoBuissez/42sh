@@ -1,0 +1,47 @@
+name: first cd
+comp_command: ./build/42sh
+stdin: |
+    cd ..
+    ls
+---
+name: second cd
+comp_command: ./build/42sh
+stdin: |
+    cd ../builtins
+    pwd
+    ls .
+---
+name: invalid cd
+comp_command: ./build/42sh
+stdin: cd not_a_dir
+---
+name: invalid cd check path
+comp_command: ./build/42sh
+stdin: |
+    cd not_a_dir
+    pwd
+---
+name: cd home
+comp_command: ./build/42sh
+stdin: cd
+---
+name: cd home check path
+comp_command: ./build/42sh
+stdin: |
+    cd
+    pwd
+---
+name: cd old pwd
+comp_command: ./build/42sh
+stdin: cd -
+---
+name: multiple cd old pwd
+comp_command: ./build/42sh
+stdin: |
+    cd -
+    pwd
+    cd -
+    pwd
+    cd -
+    cd -
+    cd -

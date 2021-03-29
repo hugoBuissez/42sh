@@ -1,0 +1,18 @@
+name: valid until
+comp_command: ./build/42sh
+stdin: until pwd && ls && echo foo ; do echo foo bar; done
+---
+name: invalid until
+comp_command: ./build/42sh
+stdin: until pwd && ls && echo foo ; echo foo bar; done
+---
+name: valid until file
+comp_command: ./build/42sh ./tests/functests/until/until_test1.sh
+---
+name: break until
+comp_command: ./build/42sh
+stdin: |
+  until echo foo; do
+    echo bar
+    break
+  done

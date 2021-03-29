@@ -1,0 +1,85 @@
+name: simple export
+comp_command: ./build/42sh
+stdin: |
+  export test=hello
+  echo $test
+---
+name: unexport
+comp_command: ./build/42sh
+stdin: |
+  export test=hello
+  echo $test
+  export -n test
+  echo $test
+---
+name: unexport non existant
+comp_command: ./build/42sh
+stdin: |
+  export -n nonexistant
+---
+name: export no value
+comp_command: ./build/42sh
+stdin: |
+  export test
+  echo $test
+---
+name: removing export
+comp_command: ./build/42sh
+stdin: |
+  export test=hello
+  echo $test
+  export -n test
+  echo $test
+---
+name: exporting shell variable
+comp_command: ./build/42sh
+stdin: |
+  test=hello
+  echo $test
+  export test
+  echo $test
+---
+name: exporting empty over existing
+comp_command: ./build/42sh
+stdin: |
+  export test=hello
+  echo $test
+  export test
+  echo $test
+---
+name: export unexport export
+comp_command: ./build/42sh
+stdin: |
+  test=hello
+  echo $test
+  export test
+  echo $test
+  export -n test
+  echo $test
+  export test
+  echo $test
+---
+name: export multiple
+comp_command: ./build/42sh
+stdin: |
+  export a=b c=d x=y
+  echo $a
+  echo $c
+  echo $x
+---
+name: unexport multiple
+comp_command: ./build/42sh
+stdin: |
+  export a=b c=d x=y
+  echo $a
+  echo $c
+  echo $x
+  export -n a c
+  echo $a
+  echo $c
+  echo $x
+---
+name: export inexisting function
+comp_command: ./build/42sh
+stdin: |
+  export toto

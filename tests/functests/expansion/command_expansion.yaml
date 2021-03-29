@@ -1,0 +1,15 @@
+name: simple command sub
+comp_command: ./build/42sh
+stdin: echo $(echo foo)
+---
+name: concat command sub
+comp_command: ./build/42sh
+stdin: echo $(seq 1 5) | cat -e
+---
+name: command with nested quotes
+comp_command: ./build/42sh
+stdin: echo $(echo "foo" 'bar' \test)
+---
+name: simple fail exit code
+comp_command: ./build/42sh
+stdin: echo $(foo)

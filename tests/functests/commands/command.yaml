@@ -1,0 +1,27 @@
+name: valid command
+comp_command: ./build/42sh
+stdin: echo test
+---
+name: one assignement then valid command
+comp_command: ./build/42sh
+stdin: test=foo echo bar
+---
+name: multiple simple commands
+comp_command: ./build/42sh tests/functests/commands/multiline_commands.sh
+---
+name: invalid block
+comp_command: ./build/42sh tests/functests/commands/invalid_block.sh
+---
+name: multiple simple shell commands
+comp_command: ./build/42sh
+stdin: |
+    (echo foo)
+    (echo bar)
+---
+name: compound list mismatching bracket
+comp_command: ./build/42sh
+stdin: (echo foo}
+---
+name: compound list missing bracket
+comp_command: ./build/42sh
+stdin: (echo foo

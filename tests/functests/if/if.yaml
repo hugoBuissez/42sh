@@ -1,0 +1,53 @@
+# PARSING
+name: missing then
+comp_command: ./build/42sh
+stdin: if echo test; echo yes; else echo no; fi
+---
+name: missing fi
+comp_command: ./build/42sh
+stdin: if echo test; then echo yes; else echo no
+---
+name: missing separator
+comp_command: ./build/42sh
+stdin: if echo test; then echo yes; else echo no fi
+---
+name: empty if body
+comp_command: ./build/42sh
+stdin: |
+    if echo foo;
+    then fi
+---
+name: no condtion
+comp_command: ./build/42sh
+stdin: if; then echo yes; else echo no fi
+---
+
+# EXEC
+name: valid
+comp_command: ./build/42sh
+stdin: if echo test; then echo yes; else echo no; fi
+---
+name: invalid if condition
+comp_command: ./build/42sh
+stdin: if echou test; then echo no; else echo yes; fi
+---
+name: invalid if body
+comp_command: ./build/42sh
+stdin: if echo test; then echou yes; else echo no; fi
+---
+name: invalid if condition and else body
+comp_command: ./build/42sh
+stdin: if echou test; then echo no; else echou no; fi
+
+# FILES
+name: valid if else file
+comp_command: ./build/42sh tests/functests/if/valid_if.sh
+---
+name: valid multiple ifs
+comp_command: ./build/42sh tests/functests/if/multiple_ifs.sh
+---
+name: invalid if else file
+comp_command: ./build/42sh tests/functests/if/invalid_if.sh
+---
+name: invalid if block
+comp_command: ./build/42sh tests/functests/if/invalid_block.sh

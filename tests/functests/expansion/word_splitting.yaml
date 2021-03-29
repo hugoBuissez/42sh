@@ -1,0 +1,63 @@
+name: simple splitting
+comp_command: ./build/42sh
+stdin: |
+  for i in $(seq 1 10); do
+    echo $i
+  done
+---
+name: quote splitting
+comp_command: ./build/42sh
+stdin: |
+  for i in "foo bar"'foo bar'foo bar; do
+    echo $i
+  done
+---
+name: in quote $@
+comp_command: ./build/42sh
+stdin: |
+  toto() {
+    for i in "$@"; do
+      echo $i
+    done
+  }
+  toto 1 2 3
+---
+name: special $@ splitting
+comp_command: ./build/42sh
+stdin: |
+  toto() {
+    for i in $@; do
+      echo $i
+    done
+  }
+  toto 1 2 3
+---
+name: special $*
+comp_command: ./build/42sh
+stdin: |
+  toto() {
+    for i in $*; do
+      echo $i
+    done
+  }
+  toto 1 2 3
+---
+name: in quote $*
+comp_command: ./build/42sh
+stdin: |
+  toto() {
+    for i in "$*""; do
+      echo $i
+    done
+  }
+  toto 1 2 3
+---
+name: in quote $*
+comp_command: ./build/42sh
+stdin: |
+  toto() {
+    for i in foo"$@"$@bar; do
+      echo $i
+    done
+  }
+  toto 1 2 3

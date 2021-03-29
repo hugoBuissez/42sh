@@ -1,0 +1,47 @@
+name: ari 1
+comp_command: ./build/42sh
+stdin: echo $((4 + 5 - 2))
+---
+name: ari 2
+comp_command: ./build/42sh
+stdin: echo $((321*11))
+---
+name: ari 3
+comp_command: ./build/42sh
+stdin: echo $((213/33))
+---
+name: ari 4
+comp_command: ./build/42sh
+stdin: echo $((-(903*3)/10+90-30^11))
+---
+name: ari 5
+comp_command: ./build/42sh
+stdin: echo $((---(304**2-10**3)+30^44/61+(33^78/4)))
+---
+name: ari 6
+comp_command: ./build/42sh
+stdin: echo $((---(304**2-10**3)+30^44/61+(33^78/4)))
+---
+name: ari 7
+comp_command: ./build/42sh
+stdin: echo $((-+-(304**2-10**3)+30^44/61+(33^78/4)+1&&0))
+---
+name: ari 8
+comp_command: ./build/42sh
+stdin: echo $((10-(-20)))
+---
+name: ari 9
+comp_command: ./build/42sh
+stdin: echo $((100^100|90**2*90))
+---
+name: ari 10
+comp_command: ./build/42sh
+stdin: echo $(~(100^100|90**2*90)+~90*9))
+---
+name: ari 11
+comp_command: ./build/42sh
+stdin: echo $(((())))
+---
+name: ari 12
+comp_command: ./build/42sh
+stdin: echo $((++))

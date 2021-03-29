@@ -1,0 +1,21 @@
+name: cat redirected file
+comp_command: ./build/42sh
+stdin: cat < tests/functests/redirections/test_redirect_1.txt
+---
+name: cat noexist
+comp_command: ./build/42sh
+stdin: cat < tests/functests/redirections/noexist
+---
+name: redirect to file
+comp_command: ./build/42sh
+stdin: echo foo > tests/functests/redirections/test.txt | cat
+---
+name: redirect command to file
+comp_command: ./build/42sh
+stdin: |
+  if echo foo; then echo bar; fi > tests/functests/redirections/test.txt | cat
+---
+name: redirect bad ending
+comp_command: ./build/42sh
+stdin: |
+  echo foo >

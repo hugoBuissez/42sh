@@ -1,0 +1,42 @@
+# PARSING
+name: missing and
+comp_command: ./build/42sh
+stdin: if echo foo echo bar; then echo no; fi
+---
+name: trailling and
+comp_command: ./build/42sh
+stdin: if echo foo &&; then echo no; fi
+---
+name: trailling and file
+comp_command: ./build/42sh tests/functests/and_or/trailing_and.sh
+---
+name: trailling or
+comp_command: ./build/42sh
+stdin: if echo foo ||; then echo no; fi
+---
+name: trailling or
+comp_command: ./build/42sh
+stdin: if echo foo || echo bar ||; then echo no; fi
+---
+name: and and
+comp_command: ./build/42sh
+stdin: if && &&; then echo no; fi
+---
+name: and and cond
+comp_command: ./build/42sh
+stdin: if echo foo && &&; then echo no; fi
+
+# EXEC
+name: valid and
+comp_command: ./build/42sh
+stdin: if echo foo && echo bar; then echo yes; fi
+---
+name: valid or
+comp_command: ./build/42sh
+stdin: if echo foo || echo bar; then echo yes; fi
+---
+name: valid mix
+comp_command: ./build/42sh
+stdin: if echo foo || echo bar && echo toto; then echo yes; fi
+
+# FILES

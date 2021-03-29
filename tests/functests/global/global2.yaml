@@ -1,0 +1,11 @@
+name: redir and function
+comp_command: ./build/42sh
+stdin: |
+    redir()
+    {
+
+        echo this is a file > tests/functests/global/file.txt
+        cat tests/functests/global/file.txt
+    }
+
+    redir && echo foo

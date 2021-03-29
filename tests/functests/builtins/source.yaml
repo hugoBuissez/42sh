@@ -1,0 +1,38 @@
+name: basic source
+comp_command: ./build/42sh
+stdin: |
+    source ./tests/functests/builtins/test_source
+    echo $a
+    echo foo
+---
+name: medium source
+comp_command: ./build/42sh
+stdin: |
+    a=12
+    echo $a
+    source ./tests/functests/builtins/test_source
+    echo $a
+---
+name: advanced source
+comp_command: ./build/42sh
+stdin: |
+    echo $a
+    a=12
+    echo $a
+    source ./tests/functests/builtins/test_source
+    echo $a
+    echo $var
+---
+name: source noexist
+comp_command: ./build/42sh
+stdin: source noexist
+---
+name: source no arg
+comp_command: ./build/42sh
+stdin: source
+---
+name: source exit code
+comp_command: ./build/42sh
+stdin: |
+    source ./tests/functests/builtins/test_source
+    echo $?

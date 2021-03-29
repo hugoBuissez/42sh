@@ -1,0 +1,41 @@
+name: invalid 1
+comp_command: ./build/42sh
+stdin: |
+    cd src
+    ls -a |cat -e
+    for i in hellooooo
+    do
+        echo $i
+    done
+---
+name: invalid 2
+comp_command: ./build/42sh
+stdin: |
+    echo $? '$?' "$?"
+    for i in 'sabine'
+    do
+        echo -e "$i \n\n"
+    done
+---
+name: invalid 3
+comp_command: ./build/42sh
+stdin: |
+    echo \a
+    \\\\\\\\\
+---
+name: invalid 4
+comp_command: ./build/42sh
+stdin: |
+    a=10
+    fac=$(factor $a)
+    echo -e "$fac"
+---
+name: invalid and and
+comp_command: ./build/42sh
+stdin: |
+    && &&
+---
+name: invalid or or
+comp_command: ./build/42sh
+stdin: |
+    || ||

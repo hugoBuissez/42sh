@@ -1,0 +1,52 @@
+name: valid case file
+comp_command: ./build/42sh tests/functests/case/valid_case.sh
+---
+name: invalid case file
+comp_command: ./build/42sh tests/functests/case/invalid_case.sh
+---
+name: invalid case no cast items
+comp_command: ./build/42sh tests/functests/case/invalid_case1.sh
+---
+name: case with var subtitution
+comp_command: ./build/42sh
+stdin:
+  for i in 1 2 3; do
+    case $i in
+      1)
+        echo 1!
+        ;;
+      2 | 3)
+        echo 2 or 3!
+        ;;
+    esac
+  done
+---
+name: case with case item subtitution
+comp_command: ./build/42sh
+stdin:
+  case_one=1;
+  for i in 1 2 3; do
+    case $i in
+      $case_one )
+        echo 1!
+        ;;
+      2 | 3)
+        echo 2 or 3!
+        ;;
+    esac
+  done
+---
+name: complex
+comp_command: ./build/42sh
+stdin:
+  case $(echo foo bar) in
+    foo)
+      echo 1
+      ;;
+    bar)
+      echo 2
+      ;;
+    "foo bar")
+      echo 3
+      ;;
+  esac

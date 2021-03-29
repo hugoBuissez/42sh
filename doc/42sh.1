@@ -1,0 +1,47 @@
+.SH Manpage for 42sh.
+
+.TH man 1 "28 November 2020" "1.0" "42sh man page"
+
+.SH NAME
+42sh \- bash style shell
+
+.SH SYNOPSIS
+\fB42sh\fR [\fIOPTIONS\fR] [\fIFILE\fR]
+
+.SH DESCRIPTION
+\fB42sh\fR is a bash like shell. It reproduces many bash commands listed below.
+
+.SH OPTIONS
+.TP 5
+.B \-c \fB<\fIcommand\fB>\fR
+If  the \fB\-c \fRoption is present, then commands are read from the first non-option argument command_string.
+
+.TP
+.B [\-+]O [\fIshopt_option\fP]
+If \fIshopt_option\fP is present, \fB\-O\fP sets the value of that option;
+\fB+O\fP unsets it.
+If \fIshopt_option\fP is not supplied, the names and values of the shell
+options accepted by \fBshopt\fP are printed on the standard output.
+If the invocation option is \fB+O\fP, the output is displayed in a format
+that may be reused as input.
+
+.SH RETURN VALUE
+
+42sh returns 1 in case of error. 0 is returned otherwise.
+
+.SH SEE ALSO
+bash(1), sh(5)
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHORS
+.P
+Hugo Buissez \fBhugo.buissez\fR\fI@\fR\fBepita.fr\fR
+
+Jeremy Croiset \fBjeremy.croiset\fR\fI@\fR\fBepita.fr\fR
+
+Nathan Habib \fBnathan.habib\fR\fI@\fR\fBepita.fr\fR
+
+Joseph Pellegrini \fBjoseph.pellegrini\fR\fI@\fR\fBepita.fr\fR
+

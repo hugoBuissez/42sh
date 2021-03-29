@@ -1,0 +1,55 @@
+name: star
+comp_command: ./build/42sh
+stdin: |
+    echo $*
+    toto ()
+    {
+        echo $*
+    }
+    toto foo bar hoo
+---
+name: arobase
+comp_command: ./build/42sh
+stdin: |
+    echo $@
+    toto ()
+    {
+        echo $@
+    }
+    toto foo bar hoo
+---
+name: nth_arg
+comp_command: ./build/42sh
+stdin: |
+    function toto ()
+    {
+        echo $1 $2
+    }
+    toto foo bar hoo
+---
+name: nth_arg no second arg
+comp_command: ./build/42sh
+stdin: |
+    function toto ()
+    {
+        echo $1 $2
+    }
+    toto foo
+---
+name: return code
+comp_command: ./build/42sh
+stdin: |
+    echo $?
+    echo foo
+    echo $?
+    noexist
+    echo $?
+---
+name: return code
+comp_command: ./build/42sh
+stdin: |
+    function toto ()
+    {
+        echo $# nb of args
+    }
+    toto foo

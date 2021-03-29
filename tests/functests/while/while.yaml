@@ -1,0 +1,13 @@
+name: valid while
+comp_command: ./build/42sh
+stdin: |
+  cd tests/functests/while
+  while cd a; do echo foo; done
+---
+name: break while
+comp_command: ./build/42sh
+stdin: |
+  while echo foo; do
+    echo bar
+    break
+  done

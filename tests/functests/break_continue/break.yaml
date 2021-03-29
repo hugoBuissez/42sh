@@ -1,0 +1,21 @@
+name: continue_with_if
+comp_command: ./build/42sh
+stdin: |
+  while pwd; do
+    if ls; then
+      echo sabine
+      break;
+    else
+      echo no;
+    fi;
+  done
+# ---
+# name: continue_with_if
+# comp_command: ./build/42sh
+# stdin: |
+#   for i in 1 2 3 4; do
+#     for j in 1 2 3 4; do
+#       echo $i $j
+#       break 2
+#     done
+#   done

@@ -1,0 +1,7 @@
+name: simple cmd
+comp_command: ./build/42sh
+stdin: echo `echo foo bar`
+---
+name: nested invalid
+comp_command: ./build/42sh
+stdin: echo `echo foo bar $(echo fii `echo test`)`

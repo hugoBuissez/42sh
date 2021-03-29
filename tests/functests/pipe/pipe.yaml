@@ -1,0 +1,30 @@
+name: one pipe
+comp_command: ./build/42sh
+stdin: echo foo | cat -e
+---
+name: fail left side
+comp_command: ./build/42sh
+stdin: fail foo | cat -e
+---
+name: fail right side
+comp_command: ./build/42sh
+stdin: echo foo | fail -e
+---
+name: two pipes
+comp_command: ./build/42sh
+stdin: echo foo | cat -e | wc -c
+---
+name: piped if
+comp_command: ./build/42sh
+stdin: |
+  if echo foo; then
+    echo bar
+  fi | cat -e
+---
+name: trailling pipe
+comp_command: ./build/42sh
+stdin: echo foo |
+---
+name: trailling pipe
+comp_command: ./build/42sh
+stdin: cat README | wc -l

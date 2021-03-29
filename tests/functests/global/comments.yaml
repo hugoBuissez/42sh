@@ -1,0 +1,12 @@
+name: simple comments
+comp_command: ./build/42sh
+stdin: |
+  # this is a comment
+  echo foo
+  # another comment
+---
+name: tricky comments
+comp_command: ./build/42sh
+stdin: |
+  # this is a comment
+  echo foo # another comment

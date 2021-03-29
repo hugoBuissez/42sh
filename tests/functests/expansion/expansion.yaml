@@ -1,0 +1,21 @@
+name: simple expansion
+comp_command: ./build/42sh
+stdin: |
+  test=hello
+  echo $test
+---
+name: double expansion
+comp_command: ./build/42sh
+stdin: |
+  hello=hello_world
+  test=hello
+  echo $test
+---
+name: function expansion
+comp_command: ./build/42sh
+stdin: |
+  hello() {
+    echo hello world!
+  }
+  test=hello
+  echo $test

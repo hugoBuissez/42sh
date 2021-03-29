@@ -1,0 +1,69 @@
+name: valid function
+comp_command: ./build/42sh
+stdin: |
+    toto () {
+        echo foo
+    }
+    toto
+---
+name: invalid function
+comp_command: ./build/42sh
+stdin: |
+    toto () { echo foo }
+    toto
+---
+name: valid function tricky
+comp_command: ./build/42sh
+stdin: function toto   (  ) (  echo foo && echo messi   ); toto
+---
+name: valid function tricky2
+comp_command: ./build/42sh
+stdin: hello(){echo barfoo}; hello
+stdout: |
+    barfoo
+---
+name: valid function file
+comp_command: ./build/42sh
+stdin: |
+    hello_world    ()
+    {   echo foooooooo
+        factor 10
+    }
+
+    hello_world
+---
+name: not valid command function
+comp_command: ./build/42sh
+stdin: |
+    function hello() {
+        pwf
+    }
+    hello
+---
+name: not valid name function
+comp_command: ./build/42sh
+stdin: toto toto hello() ( pwd ); hello
+---
+name: not valid name function
+comp_command: ./build/42sh
+stdin: |
+    test ()
+    {
+
+        echo foo
+        echo bar
+    }
+
+    test
+---
+name: function redef
+comp_command: ./build/42sh
+stdin: |
+    toto() {
+        echo 1
+    }
+    toto
+    toto() {
+        echo 3
+    }
+    toto

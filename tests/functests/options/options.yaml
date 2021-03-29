@@ -1,0 +1,11 @@
+name: -c option echo
+command: ./build/42sh -c "echo foo"
+stdout: |
+    foo
+returncode: 0
+---
+name: -c option empty error
+command: ./build/42sh -c
+stderr: |
+  42sh: Usage: ./42sh -c <command>
+returncode: 2

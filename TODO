@@ -1,0 +1,4 @@
+TODO List for 42sh
+
+- ast-printer - DONE
+- unitests - DONE for lexer, parser

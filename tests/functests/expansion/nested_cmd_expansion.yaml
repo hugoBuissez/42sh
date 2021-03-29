@@ -1,0 +1,13 @@
+name: double nested subs
+comp_command: ./build/42sh
+stdin: |
+  echo foo$(echo test1 $(echo test2))bar
+  echo foo$(echo test1 $(echo test2))
+  echo foo$(echo test1 $(echo test2) bar)
+  echo foo$(echo test1)bar
+  echo foo$(echo test1 $(echo test2)bar)
+---
+name: triple nested subs
+comp_command: ./build/42sh
+stdin: |
+  echo foo$(echo test1 $(echo test2 $(echo test3)))bar

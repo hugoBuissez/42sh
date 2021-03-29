@@ -1,0 +1,11 @@
+name: simple brackets
+comp_command: ./build/42sh
+stdin: |
+  foo=bar
+  echo ${foo}
+---
+name: tricky brackets
+comp_command: ./build/42sh
+stdin: |
+  foo=bar
+  echo ${foo---bar}

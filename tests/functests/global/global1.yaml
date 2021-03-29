@@ -1,0 +1,51 @@
+name: if then else
+comp_command: ./build/42sh
+stdin: |
+    if pwd && ls
+    then
+        echo bargoo && factor 10
+    else
+        echo doo
+    fi
+---
+name: if then else elif
+comp_command: ./build/42sh
+stdin: |
+    if pad
+    then
+        echo bargoo && factor 10
+    elif ls
+    then
+        ls
+    else
+        echo its else
+    fi
+---
+name: lotof
+comp_command: ./build/42sh
+stdin: |
+    string='Long long long long long string'
+    echo $(echo "$test" |wc -c)
+    a = '1 2 3 4'
+    for i in a;
+    do
+        echo "The current number is $i"
+    done
+---
+name: lotof 2
+comp_command: ./build/42sh
+stdin: |
+    echo $(echo $((1+1+1+1+1+11+11)))
+    a=$((-90+1090*2^90+(2**7)))
+    echo "$a"
+    echo '$a'
+    my_alias=ls
+    cd src
+    pwd
+    pwd ~
+    cd ..
+    for i in 'SABINE'
+    do
+        echo $(my_alias |cat -e)
+        echo "$i"
+    done

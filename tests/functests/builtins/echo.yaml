@@ -1,0 +1,24 @@
+name: basic echo
+comp_command: ./build/42sh
+stdin: |
+    echo foobar sabine
+---
+name: not an option echo
+comp_command: ./build/42sh
+stdin: |
+    echo -d -s 3args
+---
+name: echo -E
+comp_command: ./build/42sh
+stdin: |
+    echo -E foobar
+---
+name: echo -e
+comp_command: ./build/42sh
+stdin: |
+    echo -e foobar
+    echo -e foo\\bar
+    echo -e foo\\nbar
+    echo -e barfoo\\rfoo
+    echo -e barfoo\\tfoo
+    echo -e barfoo\\tfoo

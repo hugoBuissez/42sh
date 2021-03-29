@@ -1,0 +1,33 @@
+name: echo and exit
+comp_command: ./build/42sh
+stdin: |
+    echo foo
+    exit 99
+---
+name: exit in infinite loop
+comp_command: ./build/42sh
+stdin: |
+    while pwd
+    do
+        echo bar && exit 42
+    done
+---
+name: to big exit code
+comp_command: ./build/42sh
+stdin: |
+    echo foo && exit 999
+---
+name: non number arg
+comp_command: ./build/42sh
+stdin: |
+    exit foo
+---
+name: too many args but valid first
+comp_command: ./build/42sh
+stdin: |
+    exit 1 foo
+---
+name: too many args
+comp_command: ./build/42sh
+stdin: |
+    exit foo foo

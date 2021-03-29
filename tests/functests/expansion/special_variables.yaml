@@ -1,0 +1,30 @@
+name: nth arg simple
+comp_command: ./build/42sh
+stdin: |
+  hello () {
+    echo foo$1bar test
+  }
+  hello
+  hello 4
+  hello INSERT
+---
+name: nth arg tricky
+comp_command: ./build/42sh
+stdin: |
+  hello2 () {
+    echo $1foo$2bar$3 test
+  }
+  hello
+  hello 4
+  hello INSERT
+  hello 4 5 6 7
+---
+name: arg count simple
+comp_command: ./build/42sh
+stdin: |
+  hello () {
+    echo foo$#bar
+  }
+  hello
+  hello 1
+  hello 1 2 3

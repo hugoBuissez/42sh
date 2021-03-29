@@ -1,0 +1,26 @@
+name: tilde1
+comp_command: ./build/42sh
+stdin: |
+    echo ~
+    echo ~+
+    echo ~-
+---
+name: tilde2
+comp_command: ./build/42sh
+stdin: |
+    echo ~/foo
+    echo ~+/bar
+    echo ~-/goo
+---
+name: no expansion tilde1
+comp_command: ./build/42sh
+stdin: |
+    echo ~foo
+    echo ~+sabine
+    echo ~///foo
+---
+name: no expansion tilde2
+comp_command: ./build/42sh
+stdin: |
+    echo ~~-
+    echo ~/~+

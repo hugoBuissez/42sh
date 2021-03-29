@@ -1,0 +1,16 @@
+name: simple increment
+comp_command: ./build/42sh
+stdin: |
+  i=$(($i+1))
+  echo $i
+  i=$(($i+1))
+  echo $i
+  i=$(($i+1))
+  echo $i
+---
+name: while increment
+comp_command: ./build/42sh
+stdin: |
+  while [ $i -lt 10 ]; do
+    i=$(($i+1))
+  done

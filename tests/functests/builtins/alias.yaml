@@ -1,0 +1,27 @@
+name: invalid cmd alias
+comp_command: ./build/42sh
+stdin: |
+    alias oops='mafonction ('
+---
+name: basic alias
+comp_command: ./build/42sh
+stdin: |
+    alias foo=ls
+    alias bar=pwd
+    alias bar=tree
+    foo
+    bar
+    sabsab
+---
+name: invalid cmd alias
+comp_command: ./build/42sh
+stdin: |
+    alias foo=prd
+    alias sabsab
+    foo
+    sabsab
+---
+name: inexisting alias
+comp_command: ./build/42sh
+stdin: |
+    alias toto

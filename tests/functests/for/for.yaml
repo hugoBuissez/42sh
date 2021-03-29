@@ -1,0 +1,76 @@
+name: valid for
+comp_command: ./build/42sh
+stdin: |
+  for i in 1 2 3; do
+    echo foo bar
+  done
+---
+name: valid for multiple separator
+comp_command: ./build/42sh
+stdin: |
+  for i in 1 2 3;;; do;;;;;;
+    echo foo bar;;;;
+  done
+---
+name: valid for file
+comp_command: ./build/42sh ./tests/functests/for/for_test1.sh
+---
+name: invalid for
+comp_command: ./build/42sh
+stdin: |
+  for i in 1 2 3 do
+    echo foo
+  done
+---
+name: for with simple substitution
+comp_command: ./build/42sh
+stdin: |
+  for i in 1 2 3; do
+    echo $i
+  done
+---
+name: for with simple substitution in 'in'
+comp_command: ./build/42sh
+stdin: |
+  j=2
+  for i in 1 $j 3; do
+    echo $i
+  done
+---
+name: for with medium substitution in 'in'
+comp_command: ./build/42sh
+stdin: |
+  for i in 1 $j 3; do
+    echo $i
+  done
+---
+name: for seq
+comp_command: ./build/42sh
+stdin: |
+  for i in $(seq 1 5); do
+    echo $i
+  done
+---
+name: for with complex substitution in 'in'
+comp_command: ./build/42sh
+stdin: |
+  in_var="1 2 3"
+  for i in $in_var; do
+    echo $i
+  done
+---
+name: for with double substitution in 'in'
+comp_command: ./build/42sh
+stdin: |
+  j=2
+  in_var="1 $j 3"
+  for i in $in_var; do
+    echo $i
+  done
+---
+name: for seq
+comp_command: ./build/42sh
+stdin: |
+  for i in $(seq 1 5); do
+    echo $i
+  done
